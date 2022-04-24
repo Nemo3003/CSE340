@@ -9,6 +9,15 @@
        --white: #ffffff;
        --roboto: 'Roboto', sans-serif;}
 /*------------------------------CONTENT----------------------------------*/
+/*--------------------NOT ALTERED IN ANY VIEW---------------------------*/
+html{
+    background-image: url('/phpmotors/images/site/checkerboard.jpg');
+}
+body{
+    background-color: var(--white);
+}
+a { cursor: pointer;}
+button { cursor: pointer;}
 @media screen and (min-width: 30em) {
     body{ font-family: var(--roboto);}
     
@@ -31,24 +40,36 @@
     #page_nav li:hover {
         padding: .3rem;
         background-color: var(--blue);}
-
-    a { cursor: pointer;}
     /*-------------------------------HEADER--------------------------------------*/
     /*-------------------------------MAIN---------------------------------------*/
-    #delorian {
+    #delorean {
         background-image: url('/phpmotors/images/delorean.jpg');
-        background-repeat: no-repeat;}
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+    #delorean h1{
+        margin-left: 5rem;
+    }
+    #side-del {
+        font-size: large;
+        font-weight: bold;
+        color: var(--blue);
+        margin-left: 10rem;
+
+    }
     /*-------------------------------BOTTOM PAGE-------------------------------*/
     #div-bottom {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: .2fr .7fr;
+        grid-template-rows: .2fr .15fr;
         grid-column-gap: 0px;
-        grid-row-gap: 0px;}
+        grid-row-gap: 0px;
+    }
 
     /*========Reviews===========*/
-    #character h2 { grid-area: 1 / 2 / 2 / 3;}
-    #character ul { grid-area: 2 / 2 / 3 / 3;}
+    
+    #character h2 { grid-area: 1 / 2 / 2 / 3; text-align: center;}
+    #character ul { grid-area: 2 / 2 / 3 / 3; line-height: 2rem; margin-left: 5rem; font-size: larger;}
     /*========Upgrades==========*/
     #upgrades { text-align: center; }
     #upgrades h2 { grid-area: 1 / 1 / 2 / 2;}
@@ -68,5 +89,8 @@
         margin: 0 auto;
         background-color: var(--blue);}
     /*-------------------------------FOOTER------------------------------------*/
-    footer { text-align: center;}
+    footer {
+        text-align: center;
+        border: 2px solid var(--black);
+        box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.75);}
 }

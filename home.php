@@ -15,8 +15,9 @@
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/nav.php'; ?> 
         </nav>
         <main>
+        
+        <div id="delorean">
         <h1>Welcome to PHP Motors!</h1> 
-        <div id="delorian">
             <div id="side-del">
                 <h2 id="title-del"> DMC Delorean</h2>
                 <p>3 Cup holders</p>
@@ -52,12 +53,12 @@
             </div>
             <div id="character">
                 <h2>DMC Delorean Reviews</h2>
-                <ul>
-                    <li>"So fast its almost like travelling in time." (4/5)</li><br>
-                    <li>"Coolest ride on the road."(4/5)</li><br>
-                    <li>"I'm feeling Marty McFly!"(5/5)</li><br>
-                    <li>"The most futuristic ride of our day."(4.5/5)</li><br>
-                    <li>"50's livin and I love it!"(5/5)</li><br>
+                <ul><br><br>
+                    <li>"So fast its almost like travelling in time." (4/5)</li>
+                    <li>"Coolest ride on the road."(4/5)</li>
+                    <li>"I'm feeling Marty McFly!"(5/5)</li>
+                    <li>"The most futuristic ride of our day."(4.5/5)</li>
+                    <li>"50's livin and I love it!"(5/5)</li>
                 </ul>
             </div>
         </div>
