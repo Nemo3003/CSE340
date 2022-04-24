@@ -9,3 +9,6 @@
         <li>Used</li>
     </ul>
 </nav>
+<?php
+//here we have the nav
+?>
