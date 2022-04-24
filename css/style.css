@@ -1,20 +1,16 @@
 /*-----------------------------IMPORTS----------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
 /*------------------------------ROOT---------------------------*/
-:root{
-    --lightGrey: #bababa;
-    --grey: #8d8d8d;
-    --lightBlue: #a6cbeb;
-    --blue: #4c96d7;
-    --black: #3a3a3a;
-    --white: #ffffff;
-    --roboto: 'Roboto', sans-serif;
-}
+:root {--lightGrey: #bababa;
+       --grey: #8d8d8d;
+       --lightBlue: #a6cbeb;
+       --blue: #4c96d7;
+       --black: #3a3a3a;
+       --white: #ffffff;
+       --roboto: 'Roboto', sans-serif;}
 /*------------------------------CONTENT----------------------------------*/
 @media screen and (min-width: 30em) {
-    body{
-        font-family: var(--roboto);
-    }
+    body{ font-family: var(--roboto);}
     
     #page_nav {
         background-color: var(--black);
@@ -30,15 +26,47 @@
         text-align: center;
         cursor: pointer;
         color: var(--white);
-        list-style-type: none;
-    }
+        list-style-type: none;}
+
     #page_nav li:hover {
         padding: .3rem;
-        background-color: var(--blue);
-    }
+        background-color: var(--blue);}
+
+    a { cursor: pointer;}
     /*-------------------------------HEADER--------------------------------------*/
+    /*-------------------------------MAIN---------------------------------------*/
+    #delorian {
+        background-image: url('/phpmotors/images/delorean.jpg');
+        background-repeat: no-repeat;}
+    /*-------------------------------BOTTOM PAGE-------------------------------*/
+    #div-bottom {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: .2fr .7fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;}
+
+    /*========Reviews===========*/
+    #character h2 { grid-area: 1 / 2 / 2 / 3;}
+    #character ul { grid-area: 2 / 2 / 3 / 3;}
+    /*========Upgrades==========*/
+    #upgrades { text-align: center; }
+    #upgrades h2 { grid-area: 1 / 1 / 2 / 2;}
+    #upgr-content { grid-area: 2 / 1 / 3 / 2;}
+
+    #upgr-deep {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 5px;
+        grid-row-gap: 20px;
+        text-align: center;}
+
+    #upgr-deep img {
+        display: flex;
+        padding: 1rem 5rem;
+        margin: 0 auto;
+        background-color: var(--blue);}
     /*-------------------------------FOOTER------------------------------------*/
-    footer {
-        text-align: center;
-    }
+    footer { text-align: center;}
 }
