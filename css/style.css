@@ -15,13 +15,12 @@ html{
 }
 body{
     background-color: var(--white);
+    margin: 1rem;
+    font-family: var(--roboto);
 }
 a { cursor: pointer;}
 button { cursor: pointer;}
-@media screen and (min-width: 30em) {
-    body{ font-family: var(--roboto);}
-    
-    #page_nav {
+#page_nav {
         background-color: var(--black);
         padding: 1rem;
     }
@@ -40,6 +39,17 @@ button { cursor: pointer;}
     #page_nav li:hover {
         padding: .3rem;
         background-color: var(--blue);}
+@media screen and (min-width: 7em){
+#div-bottom{
+    display: grid;
+    grid-template-columns:  1fr;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+}
+}
+@media screen and (min-width: 30em) {
+    
     /*-------------------------------HEADER--------------------------------------*/
     /*-------------------------------MAIN---------------------------------------*/
     #delorean {
