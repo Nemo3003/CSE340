@@ -93,6 +93,10 @@ form input{
     width: 20rem;
     height: 2rem;
     }
+form a{
+    color: var(--white);
+    }
+
 footer {
     text-align: center;
     border: 2px solid var(--black);

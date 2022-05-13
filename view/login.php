@@ -25,7 +25,7 @@
             <input name="clientPassword" id="clientPassword" type="password" placeholder="Password*" required> <br>
             <input type="submit" value="Login">
             <input type="hidden" name="action" value="Login">
-            <p>No Account? <a href="#">Sign Up!</a></p>
+            <p>No Account? <a href="/phpmotors/accounts/index.php?action=registration">Sign Up!</a></p>
          </form>
         <hr>
         </main>
