@@ -29,14 +29,14 @@ button { cursor: pointer;}
         flex-wrap: wrap;
         justify-content: space-around;
     }
-    #page_nav li{
+    #page_nav li a{
         flex: 1 0 auto;
         text-align: center;
         cursor: pointer;
         color: var(--white);
         list-style-type: none;}
 
-    #page_nav li:hover {
+    #page_nav li a:hover {
         padding: .3rem;
         background-color: var(--blue);}
 @media screen and (min-width: 7em){
