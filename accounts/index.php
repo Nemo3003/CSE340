@@ -1,6 +1,7 @@
 <?php
 /**
- * THE ACCOUNTS CONTROLLER
+ * http://lvh.me/phpmotors/.
+ * instructions to run docker. put this into the terminal: docker compose up -d
  * 
  */
 
@@ -29,8 +30,11 @@ if ($action == NULL) {
 }
 
 switch ($action) {
-  case '':
+  case 'template':
+      include 'view/template.php';
       break;
   default:
+      include '../view/login.php';
       break;
 }
+?>
