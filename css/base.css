@@ -90,8 +90,8 @@ form {
     font-size: x-large;
     }
 form input{
-    width: 20rem;
-    height: 2rem;
+    max-width: 20rem;
+    max-height: 2rem;
     }
 form a{
     color: var(--white);
