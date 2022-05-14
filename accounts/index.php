@@ -2,7 +2,7 @@
 /**
  * http://lvh.me/phpmotors/.
  * instructions to run docker. put this into the terminal: docker compose up -d
- * 
+ * ACCOUNTS CONTROLLER
  */
 
 // Get the database connection file
