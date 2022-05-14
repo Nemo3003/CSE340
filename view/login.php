@@ -18,6 +18,11 @@
         </nav>
         <main>
         
+        <?php
+            if (isset($message)) {
+            echo $message;
+            }
+        ?>
         <form name="login-form" method="post" action="/phpmotors/accounts/">
             <label>Email <br>
             <input name="clientEmail" id="clientEmail" type="email" placeholder="Email*" required></label>

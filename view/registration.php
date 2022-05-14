@@ -16,8 +16,12 @@
         <?php echo $navList; ?>
         </nav>
         <main>
-            
-        <form name="form" method="post">
+        <?php
+            if (isset($message)) {
+            echo $message;
+            }
+        ?>
+        <form name="form" method="post" action="/phpmotors/accounts/index.php">
         <h1>Sign Up</h1>
             <label>First Name<br>
             <input name="clientFirstname" id="clientFirstname" type="text" placeholder="First Name*"  required></label> <br>
@@ -28,11 +32,9 @@
             <label>Password<br>
             <input name="clientPassword" id="clientPassword" type="password" placeholder="Password*" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></label><br>
             <span class="password">Passwords must be at least 8 characters long and contain at least 1 number, 1 capital letter and 1 special character</span><br>
-            <input type="submit"  class="button" name="submit" value="Sign up"><br>
-            <!--
-                <input type="submit" name="submit" id="regbtn" value="Register">
+
+                <input type="submit" name="submit" id="regbtn" value="Register"><br>
                 <input type="hidden" name="action" value="register">
-            -->
             <h6>Already have an account? <a href="/phpmotors/accounts/index.php?action=login"><span>Login</span></a></h6>
         </form>
   <div id="sign-up-button">
