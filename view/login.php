@@ -19,12 +19,11 @@
         <main>
         
         <form name="login-form" method="post" action="/phpmotors/accounts/">
-            <label>Email</label>
-            <input name="clientEmail" id="clientEmail" type="email" placeholder="Email*" required>
-            <label>Password</label>
-            <input name="clientPassword" id="clientPassword" type="password" placeholder="Password*" required> <br>
-            <input type="submit" value="Login">
-            <input type="hidden" name="action" value="Login">
+            <label>Email <br>
+            <input name="clientEmail" id="clientEmail" type="email" placeholder="Email*" required></label>
+            <label>Password<br>
+            <input name="clientPassword" id="clientPassword" type="password" placeholder="Password*" required> </label><br>
+            <input type="submit" class="button" value="Login">
             <p>No Account? <a href="/phpmotors/accounts/index.php?action=registration">Sign Up!</a></p>
          </form>
         <hr>

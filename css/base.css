@@ -74,7 +74,7 @@ button { cursor: pointer; padding: .5rem; border: 1px solid var(--black); backgr
     justify-content:flex-end;
     margin-top: -2.3rem; 
     margin-right: 1.5rem;
-    font-size: 2rem;
+    
     color: var(--grey)}
 form {
     color: var(--white);
@@ -89,13 +89,14 @@ form {
     border-radius: 2rem;
     font-size: x-large;
     }
-form input{
-    max-width: 20rem;
-    max-height: 2rem;
-    }
+
 form a{
     color: var(--white);
     }
+.button {
+    font-size: 1rem;
+    font-weight: bolder;
+}
 
 footer {
     text-align: center;
@@ -103,6 +104,13 @@ footer {
     box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.75);}
     
 @media screen and (min-width: 7em) and (max-width: 29.9em) {
+    #login{
+        font-size: 1.2rem;
+    }
+    form input{
+        width: 10rem;
+        height: 2rem;
+        }
     #delorean {
         background-image: url('/phpmotors/images/delorean_1_45.jpg');
         background-repeat: no-repeat;

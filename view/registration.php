@@ -16,19 +16,19 @@
         <?php echo $navList; ?>
         </nav>
         <main>
+            
         <form name="form" method="post">
-            <label>Sign Up!</label> <br>
-            <label>First Name</label>
-            <input name="clientFirstname" id="clientFirstname" type="text" placeholder="First Name*"  required> <br>
-            <label>Last Name</label>
-            <input name="clientLastname" id="clientLastname" type="text" placeholder="Last Name*"  required><br>
-            <label>Email</label>
-            <input name="clientEmail" id="clientEmail" type="email" placeholder="Email*" required><br>
-            <label>Password</label>
-            <input name="clientPassword" id="clientPassword" type="password" placeholder="Password*" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"><br>
+        <h1>Sign Up</h1>
+            <label>First Name<br>
+            <input name="clientFirstname" id="clientFirstname" type="text" placeholder="First Name*"  required></label> <br>
+            <label>Last Name<br>
+            <input name="clientLastname" id="clientLastname" type="text" placeholder="Last Name*"  required></label><br>
+            <label>Email<br>
+            <input name="clientEmail" id="clientEmail" type="email" placeholder="Email*" required></label><br>
+            <label>Password<br>
+            <input name="clientPassword" id="clientPassword" type="password" placeholder="Password*" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></label><br>
             <span class="password">Passwords must be at least 8 characters long and contain at least 1 number, 1 capital letter and 1 special character</span><br>
-            <input type="submit" name="submit" value="Sign up"><br>
-            <input type="hidden" name="action" value="register">
+            <input type="submit"  class="button" name="submit" value="Sign up"><br>
             <h6>Already have an account? <a href="/phpmotors/accounts/index.php?action=login"><span>Login</span></a></h6>
         </form>
   <div id="sign-up-button">

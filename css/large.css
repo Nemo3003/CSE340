@@ -2,7 +2,14 @@
     
 
     /*-------------------------------HEADER--------------------------------------*/
+    #login {
+        font-size: 2rem;
+    }
     /*-------------------------------MAIN---------------------------------------*/
+    form input{
+        width: 20rem;
+        height: 2rem;
+        }
     #delorean {
         background-image: url('/phpmotors/images/delorean_1_75.jpg');
         background-repeat: no-repeat;
