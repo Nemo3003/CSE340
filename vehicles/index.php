@@ -51,6 +51,12 @@ switch($action){
     case 'template':
         include 'view/template.php';
         break;
+    case 'vehicle':
+            include '../view/vehicle-management.php';
+            break;
+    case 'Addclassification':
+        include '../view/add-classification.php';
+        break;
 }
 
 ?>
