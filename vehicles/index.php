@@ -23,7 +23,7 @@ $classificationList .= '</select>';
 
 // Get the array of classifications
 $classifications = getClassifications();
-
+echo '<pre>' . var_export($classifications, true) . '</pre>';
 // Build a navigation bar using the $classifications array
 $navList = '<ul>';
 $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
