@@ -8,9 +8,9 @@ function newClassification($classificationName){
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
     $stmt->execute();
-    $rowsNew = $stmt->rowCount();
+    $rowsChanged = $stmt->rowCount();
     $stmt->closeCursor();
-    return $rowsNew;
+    return $rowsChanged;
 }
 
 
@@ -33,10 +33,10 @@ function newVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbna
     
     $stmt->execute();
     
-    $rowsNew = $stmt->rowCount();
+    $rowsChanged = $stmt->rowCount();
     
     $stmt->closeCursor();
     
-    return $rowsNew;
+    return $rowsChanged;
 }
 ?>
