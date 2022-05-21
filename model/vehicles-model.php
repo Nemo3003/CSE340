@@ -1,5 +1,5 @@
 <?php
-
+/*Vehicles model :)*/
 function newClassification($classificationName){
     $db = phpmotorsConnect();
     $sql = 'INSERT INTO carclassification (classificationName)
