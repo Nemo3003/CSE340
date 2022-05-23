@@ -276,8 +276,8 @@ COMMIT;
 --
 -- Table structure for table `clients`
 --
- DROP TABLE IF EXISTS `clients`;
- CREATE TABLE `clients` (
+DROP TABLE IF EXISTS `clients`;
+CREATE TABLE `clients` (
    `clientId` int UNSIGNED NOT NULL,
    `clientFirstname` varchar(15) NOT NULL,
    `clientLastname` varchar(25) NOT NULL,
@@ -289,8 +289,8 @@ COMMIT;
 --
 -- Indexes for table `clients`
 --
- ALTER TABLE `clients`
- ADD PRIMARY KEY (`clientId`);
+ALTER TABLE `clients`
+   ADD PRIMARY KEY (`clientId`);
 --
 -- AUTO_INCREMENT for table `clients`
 --
