@@ -47,5 +47,27 @@
         margin: 0 auto;
         background-color: var(--blue);}
     /*-------------------------------FOOTER------------------------------------*/
-    
+    /*VEHICLE MANAGEMENT*/
+    .vehicleManagementView{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+    .vehicleManagementView ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        list-style-type: none;
+        
+    }
+    .vehicleManagementView ul li{
+        padding: 1rem;
+        margin: 1rem;
+        border: 2px solid #333;
+        background-color: antiquewhite;
+        text-decoration: none;
+    }
+    .vehMan h1,h2{
+       text-align: center;
+        margin-top: 1rem;
+    }
 }

@@ -5,20 +5,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="/phpmotors/css/main.css" media="screen">
   <link rel="stylesheet" href="/phpmotors/css/large.css" media="screen">
     <link rel="stylesheet" href="/phpmotors/css/base.css" media="screen">
   <title>Vehicle Management | PHP Motors</title>
 
 </head>
-<body>
+<body >
     
     <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?> 
     
     <nav id ="page_nav" > 
         <?php echo $navList; ?>
         </nav>
-    <main>
+    <main class="vehMan">
         <h1>Vehicle Management</h1>
         <div class="vehicleManagementView">
             <ul>
@@ -35,7 +34,6 @@
                 echo $classificationList; 
                 }
             ?>
-            <table id="inventoryDisplay"></table>
         </div>
     </main>
     <footer>
