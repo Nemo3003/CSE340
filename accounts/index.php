@@ -69,6 +69,9 @@ switch ($action) {
         exit;
       }
       break;
+    case 'home':
+        include '../view/home.php';
+        break;
   default:
       include '../view/login.php';
       break;

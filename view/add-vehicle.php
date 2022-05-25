@@ -1,4 +1,4 @@
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,16 +38,23 @@ $classificationList .= '</select>';
   <h1>Add a new Vehicle to the Inventory</h1>
   <form name="add-vehicle-form" method="POST">
   <?php echo $classificationList; ?>
+    <label for="invMake">Make</label>
     <input name="invMake" id="invMake" type="text" placeholder="Make*"<?php if(isset($invMake)){echo "value='$invMake'";} ?> required><br>
+    <label for="invModel">Model</label>
     <input name="invModel" id="invModel" type="text" placeholder="Model*"<?php if(isset($invModel)){echo "value='$invModel'";} ?>  required><br>
-    <textarea name="invDescription" id="invDescription" type="text" placeholder="Description*"<?php if(isset($invDescription)){echo "value='$invDescription'";} ?> required></textarea>
-    <label>Choose Image Path:</label>
+    <label for="invDescription">Description</label>
+    <textarea name="invDescription" id="invDescription" placeholder="Description*"<?php if(isset($invDescription)){echo "value='$invDescription'";} ?> required></textarea>
+    <label for="invImage">Choose Image Path:</label>
     <input name="invImage" id="invImage" type="text" placeholder="Image Path*" value="/phpmotors/images/no-image.png"<?php if(isset($invImage)){echo "value='$invImage'";} ?>  required>
-    <label >Choose Thumbnail Path:</label>
+    <label for="invThumbnail">Choose Thumbnail Path:</label>
     <input name="invThumbnail" id="invThumbnail" type="text" placeholder="Thumbnail Path*" value="/phpmotors/images/no-image.png"<?php if(isset($invThumbnail)){echo "value='$invThumbnail'";} ?>  required>
+    <label for="invPrice">Price</label>
     <input name="invPrice" id="invPrice" type="number" placeholder="Price*"<?php if(isset($invPrice)){echo "value='$invPrice'";} ?> required>
-    <input name="invStock" id="invStock" type="text" placeholder="Stock*"<?php if(isset($invStock)){echo "value='$invStock'";} ?>  required>
+    <label for="invStock">Stock</label>
+    <input name="invStock" id="invStock" type="number" placeholder="Stock*"<?php if(isset($invStock)){echo "value='$invStock'";} ?>  required>
+    <label for="invColor">Color</label>
     <input name="invColor" id="invColor" type="text" placeholder="Color*"<?php if(isset($invColor)){echo "value='$invColor'";} ?> required>
+    <br>
     <input type="submit" name="submit" value="Submit">
     <input type="hidden" name="action" value="newVehicle">
   </form>
