@@ -6,3 +6,4 @@
 <?php
 //here we have the footer
 ?>
+<script src="../js/app.js"></script>

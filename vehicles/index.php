@@ -44,41 +44,37 @@
             }
             break;
             case 'newVehicle':
-                // Filter and store the data
-                //FILTER_UNSAFE_RAW basically is used to avoid issues with unwanted characters
+                //Filter and store data
                 $invMake = trim(filter_input(INPUT_POST, 'invMake', FILTER_UNSAFE_RAW));
                 $invModel = trim(filter_input(INPUT_POST, 'invModel', FILTER_UNSAFE_RAW));
                 $invDescription = trim(filter_input(INPUT_POST, 'invDescription', FILTER_UNSAFE_RAW));
                 $invImage = trim(filter_input(INPUT_POST, 'invImage', FILTER_UNSAFE_RAW));
                 $invThumbnail = trim(filter_input(INPUT_POST, 'invThumbnail', FILTER_UNSAFE_RAW));
-                $invPrice = trim(filter_input(INPUT_POST, 'invPrice', FILTER_SANITIZE_NUMBER_INT));
+                $invPrice = trim(filter_input(INPUT_POST, 'invPrice', FILTER_UNSAFE_RAW, FILTER_FLAG_ALLOW_FRACTION));
                 $invStock = trim(filter_input(INPUT_POST, 'invStock', FILTER_UNSAFE_RAW));
                 $invColor = trim(filter_input(INPUT_POST, 'invColor', FILTER_UNSAFE_RAW));
-                $classificationId = trim(filter_input(INPUT_POST, 'classificationId', FILTER_SANITIZE_NUMBER_INT));
-            
+                $classificationId = trim(filter_input(INPUT_POST, 'classificationId', FILTER_UNSAFE_RAW));
                 // Check for missing data
-                if(empty($invMake) || empty($invModel) || empty($invDescription) || empty($invImage) 
-                          || empty($invThumbnail) || empty($invPrice) || empty($invStock) 
-                          || empty($invColor) || empty($classificationId)) {
-                  $message = '<p>Please provide information for all empty form fields.</p>';
-                  include '../view/add-vehicle.php';
-                  exit; 
+                if(empty($invMake) || empty($invModel) || empty($invDescription) || empty($invImage) || empty($invThumbnail) || 
+                empty($invPrice) || empty($invStock) || empty($invColor) || empty($classificationId)){
+                    $message = '<p>Please provide information for all empty form fields.</p>';
+                    include '../view/add-vehicle.php';
+                    exit; 
                 }
-            
-                // Send to vehicle model
-                $addVehicleResult = newVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId);
-            
+                // Send the data to the model
+                $regOutcome = addNewVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId);
                 // Check and report the result
-                if($addVehicleResult === 1) {
-                  $message = "<p class='success'>Success, You have added $invMake $invModel to the inventory.</p>";
-                  include '../view/add-vehicle.php';
-                  exit;
+                if($regOutcome === 1){
+                    $message = "<p>The $invMake $invModel has been added succesfully!.</p>";
+                    include '../view/add-vehicle.php';
+                    exit;
                 } else {
-                  $message = "<p class='error'>Sorry, something went wrong, $invMake $invModel was not added. Please try again.</p>";
-                  include '../view/add-vehicle.php';
-                  exit;
+                    $message = "<p>Sorry, we could't add the $invMake $invModel. Please try again.</p>";
+                    include '../view/add-vehicle.php';
+                    exit;
                 }
                 break;
+            
         case 'Addclassification':
             include '../view/add-classification.php';
             break;
