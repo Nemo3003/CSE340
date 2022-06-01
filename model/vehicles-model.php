@@ -21,6 +21,7 @@ $invStock, $invColor, $classificationId) {
             invStock, invColor, classificationId) VALUES (:invMake, :invModel, :invDescription, 
             :invImage, :invThumbnail, :invPrice, :invStock, :invColor, :classificationId)';
     $stmt = $db->prepare($sql);
+    //The PDO represents a connection between PHP and a database server
     $stmt->bindValue(':invMake', $invMake, PDO::PARAM_STR);
     $stmt->bindValue(':invModel', $invModel, PDO::PARAM_STR);
     $stmt->bindValue(':invDescription', $invDescription, PDO::PARAM_STR);

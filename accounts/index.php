@@ -11,17 +11,10 @@ require_once '../library/connections.php';
 require_once '../model/main-model.php';
 // Get the accounts model
 require_once '../model/accounts-model.php';
+//Get the functions library
+require_once '../library/functions.php';
 
-// Get the array of classifications
-$classifications = getClassifications();
-
-// Build a navigation bar using the $classifications array
-$navList = '<ul>';
-$navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
-foreach ($classifications as $classification) {
- $navList .= "<li><a href='/phpmotors/index.php?action=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
-}
-$navList .= '</ul>';
+NavBar();
 //echo $navList;
 //exit;
 /**echo "<pre>";
@@ -44,11 +37,13 @@ switch ($action) {
       break;
   case 'register':
       // Filter and store the data
-      $clientFirstname = filter_input(INPUT_POST, 'clientFirstname');
-      $clientLastname = filter_input(INPUT_POST, 'clientLastname');
-      $clientEmail = filter_input(INPUT_POST, 'clientEmail');
-      $clientPassword = filter_input(INPUT_POST, 'clientPassword');
-     
+      $clientFirstname = filter_input(INPUT_POST, 'clientFirstname',FILTER_UNSAFE_RAW);
+      $clientLastname = filter_input(INPUT_POST, 'clientLastname',FILTER_UNSAFE_RAW);
+      $clientEmail = filter_input(INPUT_POST, 'clientEmail',FILTER_UNSAFE_RAW);
+      $clientPassword = filter_input(INPUT_POST, 'clientPassword',FILTER_UNSAFE_RAW);
+
+      $clientEmail = checkEmail($clientEmail);
+      $checkPassword = checkPass($clientPassword);
       // Check for missing data
       if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($clientPassword)){
         $message = '<p>Please provide information for all empty form fields.</p>';

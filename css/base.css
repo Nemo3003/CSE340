@@ -100,7 +100,10 @@ form a{
     font-size: 1rem;
     font-weight: bolder;
 }
-
+.vehMan h1,h2{
+    text-align: center;
+     margin-top: 1rem;
+ }
 footer {
     text-align: center;
     border: 2px solid var(--black);
@@ -141,5 +144,14 @@ footer {
         grid-area: 2 / 1 / 3 / 2;
         margin-bottom: 1rem;
         text-align: center;
+    }
+    .vehicleManagementView ul{
+        display: flex;
+        flex-direction: column;
+    }
+    .vehicleManagementView ul li{
+        margin: .5rem;
+        border: 2px solid #333;
+        background-color: antiquewhite;
     }
 }
