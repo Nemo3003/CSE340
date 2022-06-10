@@ -25,7 +25,7 @@
                 <p>3 Cup holders</p>
                 <p>Superman doors</p>
                 <p>Fuzzy dice</p>
-                <button onclick="location.href='/phpmotors/vehicles/index.php'" type="button">Own Today</button>
+                <button onclick="location.href='#'" type="button">Own Today</button>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             </div>
         </div>

@@ -2,9 +2,11 @@
     
 
     /*-------------------------------HEADER--------------------------------------*/
+
     #login {
-        font-size: 2rem;
-    }
+        display: flex;
+        justify-content: flex-end;
+        font-size: 1.2rem;}
     /*-------------------------------MAIN---------------------------------------*/
     form input{
         width: 20rem;

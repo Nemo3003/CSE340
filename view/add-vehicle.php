@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+  // Check if user is logged in and correct level. If not, send to home
+  if(!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] < 3) {
+    header('Location: /phpmotors/index.php');
+  }
+?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">

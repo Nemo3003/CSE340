@@ -71,11 +71,24 @@ button { cursor: pointer; padding: .5rem; border: 1px solid var(--black); backgr
     margin: 0 auto;
     background-color: var(--blue);}
 #login {
-    display: flex; 
-    justify-content:flex-end;
-    margin-top: -2.3rem; 
-    margin-right: 1.5rem;
-    color: var(--grey)}
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+#data-admin{
+    display:flex;
+    flex-direction: column;
+    margin-left: 2rem;
+}
+#data-admin ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style-type: none;
+}
+#data-admin .button{
+    margin-left: 10rem;
+}
+
 textarea{
     max-width: 35rem;
 }
