@@ -1,5 +1,7 @@
 @media screen and (min-width: 30em) {
-    
+    #data-admin .button{
+        margin-left: 10rem;
+    }
 
     /*-------------------------------HEADER--------------------------------------*/
 

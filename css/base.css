@@ -85,9 +85,7 @@ button { cursor: pointer; padding: .5rem; border: 1px solid var(--black); backgr
     justify-content: space-around;
     list-style-type: none;
 }
-#data-admin .button{
-    margin-left: 10rem;
-}
+
 
 textarea{
     max-width: 35rem;
@@ -123,6 +121,9 @@ footer {
     box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.75);}
     
 @media screen and (min-width: 7em) and (max-width: 29.9em) {
+    #data-admin .button{
+        margin-left: 2rem;
+    }
     #login{
         font-size: 1.2rem;
     }
