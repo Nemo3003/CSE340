@@ -13,7 +13,11 @@ require_once 'model/main-model.php';
 //Get the functions library
 require_once 'library/functions.php';
 
-NavBar();
+// Get the array of classifications
+$classifications = getClassifications();
+//Call the navbar
+$navList = NavBar($classifications);
+
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
   $action = filter_input(INPUT_GET, 'action');

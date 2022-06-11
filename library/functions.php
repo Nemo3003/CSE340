@@ -11,19 +11,14 @@ function checkPass($clientPassword){
   return preg_match($pattern, $clientPassword);
  }
 
- function NavBar(){
-  global $navList;
-  global $classificationList;
-   $classifications = getClassifications();
-
-
-    $navList = "<ul id='navigation'>";
-    $navList .= "<li><a href='/phpmotors/accounts/index.php' title='View the PHP Motors home page'>Home</a></li>";
-    $classificationList = "<select name='classificationId' id='carClassification'>";
-    foreach ($classifications as $classification) {$name = $classification['classificationName']; $id = $classification['classificationId']; $navList .="<li><a href='/phpmotors/index.php?action=".urlencode($name)."' title='View our $name product line'>$name</a></li>"; $classificationList .= "<option value='$id'>$name</option>";
-    }
-    $navList .='</ul>';
-    $classificationList .="</select><br>";
-   
- }
+ function NavBar($classifications) {
+  $navList = '<ul>';
+  $navList .= "<li><a href='/phpmotors/' title='View the PHP Motors home page'>Home</a></li>";
+  foreach ($classifications as $classification) {
+     $navList .= "<li><a href='/phpmotors/vehicles/?action=classification&classificationName=".urlencode($classification['classificationName']). "' title='View our $classification[classificationName] lineup of vehicles'>$classification[classificationName]</a></li>";
+  }
+  $navList .= '</ul>';
+  return $navList;
+}
+ 
  

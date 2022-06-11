@@ -7,8 +7,10 @@ session_start();
     require_once '../model/vehicles-model.php';
     require_once '../library/functions.php';
 
+    // Get the array of classifications
     $classifications = getClassifications();
-    NavBar();
+    //Call the navbar
+    $navList = NavBar($classifications);
 
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL) {
