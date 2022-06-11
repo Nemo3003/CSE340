@@ -3,6 +3,8 @@
   if(!$_SESSION['loggedin'] ) {
     header('Location: /phpmotors/index.php');
   }
+  /**Email: admin@cse340.net
+Password: Sup3rU$er */
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
