@@ -126,6 +126,79 @@ switch ($action) {
     case 'home':
         include '../view/home.php';
         break;
+    case 'updateClient':
+          // Filter and store the data
+          $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+          $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+          $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+          $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+      
+          $clientEmail = checkEmail($clientEmail);
+      
+          if(isset($clientEmail) && $clientEmail != $_SESSION['clientData']['clientEmail']) {
+            $emailExists = checkExistingEmail($clientEmail);
+      
+            // Check for existing email address in the table
+            if($emailExists){
+              $message = '<p class="notice">That email address already exists. Do you want to login instead?</p>';
+              include '../view/update-client.php';
+              exit;
+            }
+          }
+          
+          // Check for missing data
+          if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)) {
+            $_SESSION['message'] = '<p>Please provide information for all empty form fields.</p>';
+            include '../view/client-update.php';
+            exit; 
+          }
+      
+          // Send the data to the model
+          $updateResult = updateClient($clientFirstname, $clientLastname, $clientEmail, $clientId);
+      
+          // Check and report the result
+          if($updateResult === 1) {
+            $message = "<p class='success'>Success, You have updated your information.</p>";
+            $_SESSION['message'] = $message;
+            header('location: /phpmotors/accounts?action=admin');
+            exit;
+          } else {
+            $message = "<p class='error'>Sorry, something went wrong, your info was not updated. Please try again.</p>";
+            include '../view/client-update.php';
+            exit;
+          }
+          break;
+          case 'updatePassword':
+            // Filter and store the data
+            $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+            $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        
+            $checkPassword = checkPass($clientPassword);
+        
+            // Check for missing data
+            if(empty($checkPassword)){
+              $message = '<p>Please provide information for all empty form fields.</p>';
+              include '../view/update-password.php';
+              exit; 
+            }
+        
+            $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+        
+            // Send the data to the model
+            $updateResult = updatePassword($hashedPassword, $clientId);
+        
+            // Check and report the result
+            if($updateResult === 1) {
+              $message = "<p class='success'>Success, You have changed your password.</p>";
+              $_SESSION['message'] = $message;
+              header('location: /phpmotors/accounts?action=admin');
+              exit;
+            } else {
+              $message = "<p class='error'>Sorry, something went wrong, your password was not changed. Please try again.</p>";
+              include '../view/update-client.php';
+              exit;
+            }
+            break;    
   default:
       include '../view/admin.php';
       break;

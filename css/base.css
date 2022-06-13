@@ -16,7 +16,10 @@
     font-size: xx-large;
     font-weight: bolder;
 }
-
+.lefty{
+    display: flex;
+    justify-content: flex-start;
+}
 /*--------------------NOT ALTERED IN ANY VIEW---------------------------*/
 html{
     background-image: url('/phpmotors/images/site/checkerboard.jpg');

@@ -25,18 +25,23 @@ Password: Sup3rU$er */
         <main>
         <div id="data-admin">
             <!--Say hi to the user logged in-->
-            <h1>Welcome! <?php echo $_SESSION['clientData']['clientFirstname']?></h1>
+            <h1><?php echo $_SESSION['clientData']['clientFirstname']?> <?php echo $_SESSION['clientData']['clientLastname']?></h1>
             <ul>
                 <li>First Name: <?php echo $_SESSION['clientData']['clientFirstname']?></li>
                 <li>Last Name: <?php echo $_SESSION['clientData']['clientLastname']?></li>
                 <li>Email: <?php echo $_SESSION['clientData']['clientEmail']?></li>
             </ul>
+            
+            <h2 class="lefty">Account Management</h2>
+            <p>Use this link to update your account information.</p>
+            <a class="button" href="/phpmotors/accounts/index.php?action=updateClient">Update Account</a>
+
             <!--Check if the user has the level required-->
             <?php if($_SESSION['clientData']['clientLevel'] > 1){
+                 echo "<h2 class='lefty'>Inventory Management</h2>";
+                 echo "<p>Use this link to manage the inventory.</p>"; 
                  echo "<a class='button' href='/phpmotors/vehicles/index.php'>Vehicle Management</a> <br> <br>";
             }?>
-                            
-            
         <?php
             
         ?>
