@@ -20,6 +20,14 @@
     display: flex;
     justify-content: flex-start;
 }
+/*----------------------------Messages-----------------------------*/
+.success{
+    color: #539153;
+}
+.error, .notice{
+    color: #ff0000;
+    font
+}
 /*--------------------NOT ALTERED IN ANY VIEW---------------------------*/
 html{
     background-image: url('/phpmotors/images/site/checkerboard.jpg');
