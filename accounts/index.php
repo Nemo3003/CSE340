@@ -140,7 +140,7 @@ switch ($action) {
       
             // Check for existing email address in the table
             if($emailExists){
-              $message = '<p class="notice">That email address already exists. Do you want to login instead?</p>';
+              $message = '<p class="notice">That email address already exists. Try another one.</p>';
               include '../view/update-client.php';
               exit;
             }
@@ -157,18 +157,21 @@ switch ($action) {
           $updateResult = updateClient($clientFirstname, $clientLastname, $clientEmail, $clientId);
       
           // Check and report the result
-          if($updateResult === 1) {
+          if($updateResult) {
             $message = "<p class='success'>Success, You have updated your information.</p>";
             $_SESSION['message'] = $message;
+            $clientData = getClientById($clientId);
+            $_SESSION['clientData'] = $clientData;
             header('location: /phpmotors/accounts?action=admin');
             exit;
           } else {
             $message = "<p class='error'>Sorry, something went wrong, your info was not updated. Please try again.</p>";
-            include '../view/client-update.php';
+            $_SESSION['message'] = $message;
+            header('location: /phpmotors/accounts?action=admin');
             exit;
           }
           break;
-          case 'updatePassword':
+    case 'updatePassword':
             // Filter and store the data
             $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
             $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
@@ -176,9 +179,9 @@ switch ($action) {
             $checkPassword = checkPass($clientPassword);
         
             // Check for missing data
-            if(empty($checkPassword)){
+            if(empty($clientPassword)){
               $message = '<p>Please provide information for all empty form fields.</p>';
-              include '../view/update-password.php';
+              include '../view/client-update.php';
               exit; 
             }
         
@@ -188,15 +191,19 @@ switch ($action) {
             $updateResult = updatePassword($hashedPassword, $clientId);
         
             // Check and report the result
-            if($updateResult === 1) {
-              $message = "<p class='success'>Success, You have changed your password.</p>";
+            if($updateResult) {
+              $message = "<p class='success'>Success, You have updated your password.</p>";
               $_SESSION['message'] = $message;
+              $clientData = getClientById($clientId);
+              $_SESSION['clientData'] = $clientData;
               header('location: /phpmotors/accounts?action=admin');
               exit;
             } else {
-              $message = "<p class='error'>Sorry, something went wrong, your password was not changed. Please try again.</p>";
-              include '../view/update-client.php';
+              $message = "<p class='error'>Sorry, something went wrong, your password was not updated. Please try again.</p>";
+              $_SESSION['message'] = $message;
+              header('location: /phpmotors/accounts?action=admin');
               exit;
+            
             }
             break;    
   default:

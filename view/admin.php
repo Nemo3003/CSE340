@@ -3,6 +3,9 @@
   if(!$_SESSION['loggedin'] ) {
     header('Location: /phpmotors/index.php');
   }
+  if(isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+  }
   /**Email: admin@cse340.net
 Password: Sup3rU$er */
 ?><!DOCTYPE html>
@@ -23,6 +26,11 @@ Password: Sup3rU$er */
         <?php echo $navList; ?>
         </nav>
         <main>
+        <?php
+         if (isset($message)) {
+             echo $message;
+         }
+         ?>
         <div id="data-admin">
             <!--Say hi to the user logged in-->
             <h1><?php echo $_SESSION['clientData']['clientFirstname']?> <?php echo $_SESSION['clientData']['clientLastname']?></h1>
@@ -45,6 +53,7 @@ Password: Sup3rU$er */
         <?php
             
         ?>
+        <br><br>
 		</div>
         </main>
     <footer id = "footer_page">

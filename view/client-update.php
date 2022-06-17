@@ -31,19 +31,20 @@
   <div class="flex-container">
     <h2>Update Your Information</h2>
     <form name="update-client-form" method="post" action="/phpmotors/accounts/index.php">
-      <input name="clientFirstname" id="clientFirstname" type="text" placeholder="First Name*" required <?php if(isset($clientFirstname)){echo "value='$clientFirstname'";} elseif(isset($clientInfo['clientFirstname'])) {echo "value='$clientInfo[clientFirstname]'"; } ?>>
-      <input name="clientLastname" id="clientLastname" type="text" placeholder="Last Name*" required <?php if(isset($clientLastname)){echo "value='$clientLastname'";} elseif(isset($clientInfo['clientLastname'])) {echo "value='$clientInfo[clientLastname]'"; } ?>>
-      <input name="clientEmail" id="clientEmail" type="text" placeholder="Email*" required <?php if(isset($clientEmail)){echo "value='$clientEmail'";} elseif(isset($clientInfo['clientEmail'])) {echo "value='$clientInfo[clientEmail]'"; } ?>>
-      <input type="submit" name="submit" value="Save">
+      <input name="clientFirstname" id="clientFirstname" type="text"  value="<?php if(isset($clientInfo['clientFirstname'])) {echo "value='$clientInfo[clientFirstname]'"; } elseif(isset($_SESSION['clientData']['clientFirstname'])){echo $_SESSION['clientData']['clientFirstname'];} ?>" required >
+      <input name="clientLastname" id="clientLastname" type="text"  value="<?php  if(isset($clientInfo['clientLastname'])) {echo "value='$clientInfo[clientLastname]'"; }elseif(isset($_SESSION['clientData']['clientLastname'])){echo $_SESSION['clientData']['clientLastname'];} ?>" required >
+      <input name="clientEmail" id="clientEmail" type="email" value="<?php  if(isset($clientInfo['clientEmail'])) {echo "value='$clientInfo[clientEmail]'"; }elseif(isset($_SESSION['clientData']['clientEmail'])){echo $_SESSION['clientData']['clientEmail'];} ?>"  required >
+      <input type="submit" name="submit" value="Save Client">
       <input type="hidden" name="action" value="updateClient">
       <input type="hidden" name="clientId" value="
-      <?php if(isset($clientInfo)){ echo $clientInfo['clientId']; } ?>">
+      <?php if(isset($_SESSION['clientData']['clientId'])){ echo $_SESSION['clientData']['clientId']; } ?>">
     </form>
     <h2>Change Your Password</h2>
+    <p>*Note that your password will be permanently deleted</p>
     <form name="update-password-form" method="post" action="/phpmotors/accounts/index.php">
       <input name="clientPassword" id="clientPassword" type="password" placeholder="New Password*" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
       <span class="password">Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
-      <input type="submit" name="submit" value="Save">
+      <input type="submit" name="submit" value="Save Password">
       <input type="hidden" name="action" value="updatePassword">
       <input type="hidden" name="clientId" value="
       <?php if(isset($_SESSION)){ echo $_SESSION['clientData']['clientId']; } ?>">
