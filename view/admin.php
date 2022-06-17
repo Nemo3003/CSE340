@@ -3,8 +3,8 @@
   if(!$_SESSION['loggedin'] ) {
     header('Location: /phpmotors/index.php');
   }
-  if(isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
+  if(isset($_SESSION['messages'])) {
+    $messages = $_SESSION['messages'];
   }
   /**Email: admin@cse340.net
 Password: Sup3rU$er */
@@ -27,8 +27,8 @@ Password: Sup3rU$er */
         </nav>
         <main>
         <?php
-         if (isset($message)) {
-             echo $message;
+         if (isset($messages)) {
+             echo $messages;
          }
          ?>
         <div id="data-admin">

@@ -158,15 +158,15 @@ switch ($action) {
       
           // Check and report the result
           if($updateResult) {
-            $message = "<p class='success'>Success, You have updated your information.</p>";
-            $_SESSION['message'] = $message;
+            $messages = "<p class='success'>Success, You have updated your information.</p>";
+            $_SESSION['messages'] = $messages;
             $clientData = getClientById($clientId);
             $_SESSION['clientData'] = $clientData;
             header('location: /phpmotors/accounts?action=admin');
             exit;
           } else {
-            $message = "<p class='error'>Sorry, something went wrong, your info was not updated. Please try again.</p>";
-            $_SESSION['message'] = $message;
+            $messages = "<p class='error'>Sorry, something went wrong, your info was not updated. Please try again.</p>";
+            $_SESSION['messages'] = $messages;
             header('location: /phpmotors/accounts?action=admin');
             exit;
           }
