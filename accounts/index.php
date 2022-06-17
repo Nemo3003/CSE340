@@ -141,7 +141,7 @@ switch ($action) {
             // Check for existing email address in the table
             if($emailExists){
               $message = '<p class="notice">That email address already exists. Try another one.</p>';
-              include '../view/update-client.php';
+              include '../view/client-update.php';
               exit;
             }
           }
@@ -177,34 +177,38 @@ switch ($action) {
             $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         
             $checkPassword = checkPass($clientPassword);
-        
             // Check for missing data
             if(empty($clientPassword)){
               $message = '<p>Please provide information for all empty form fields.</p>';
               include '../view/client-update.php';
               exit; 
             }
-        
+            //check if the password is valid
+            if(!$checkPassword) {
+              $message = '<p class="notice">Please provide a valid password.</p>';
+              include '../view/client-update.php';
+              exit;
+            }else{
             $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
         
             // Send the data to the model
             $updateResult = updatePassword($hashedPassword, $clientId);
         
-            // Check and report the result
+            // Check the password  and report the result
             if($updateResult) {
-              $message = "<p class='success'>Success, You have updated your password.</p>";
-              $_SESSION['message'] = $message;
+              $messages = "<p class='success'>Success, You have updated your password.</p>";
+              $_SESSION['messages'] = $messages;
               $clientData = getClientById($clientId);
               $_SESSION['clientData'] = $clientData;
               header('location: /phpmotors/accounts?action=admin');
               exit;
             } else {
-              $message = "<p class='error'>Sorry, something went wrong, your password was not updated. Please try again.</p>";
-              $_SESSION['message'] = $message;
+              $messages = "<p class='error'>Sorry, something went wrong, your password was not updated. Please try again.</p>";
+              $_SESSION['messages'] = $messages;
               header('location: /phpmotors/accounts?action=admin');
               exit;
+            }}
             
-            }
             break;    
   default:
       include '../view/admin.php';

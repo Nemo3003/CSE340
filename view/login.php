@@ -2,6 +2,7 @@
 if(isset($_SESSION['message'])) {
     $message = $_SESSION['message'];
   }
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +27,7 @@ if(isset($_SESSION['message'])) {
             if (isset($message)) {
             echo $message;
             }
+          
         ?>
         <form name="login-form" method="post" action="/phpmotors/accounts/">
             <label>Email <br>
