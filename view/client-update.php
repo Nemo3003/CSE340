@@ -44,7 +44,7 @@
       <?php if(isset($_SESSION['clientData']['clientId'])){ echo $_SESSION['clientData']['clientId']; } ?>">
     </form>
     <h2>Change Your Password</h2>
-    <p>*Note that your password will be permanently deleted</p>
+    <p>*Note that your password will be permanently changed</p>
     <form name="update-password-form" method="post" action="/phpmotors/accounts/index.php">
       <label for="clientPassword">New Password</label>
       <input name="clientPassword" id="clientPassword" type="password" placeholder="New Password*" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
