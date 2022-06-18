@@ -31,9 +31,13 @@
   <div class="flex-container">
     <h2>Update Your Information</h2>
     <form name="update-client-form" method="post" action="/phpmotors/accounts/index.php">
+      <label for="clientFirstname">First name</label>
       <input name="clientFirstname" id="clientFirstname" type="text"  value="<?php if(isset($clientInfo['clientFirstname'])) {echo "value='$clientInfo[clientFirstname]'"; } elseif(isset($_SESSION['clientData']['clientFirstname'])){echo $_SESSION['clientData']['clientFirstname'];} ?>" required >
+      <label for="clientLastname">Last name</label>
       <input name="clientLastname" id="clientLastname" type="text"  value="<?php  if(isset($clientInfo['clientLastname'])) {echo "value='$clientInfo[clientLastname]'"; }elseif(isset($_SESSION['clientData']['clientLastname'])){echo $_SESSION['clientData']['clientLastname'];} ?>" required >
+      <label for="clientEmail">Email</label>
       <input name="clientEmail" id="clientEmail" type="email" value="<?php  if(isset($clientInfo['clientEmail'])) {echo "value='$clientInfo[clientEmail]'"; }elseif(isset($_SESSION['clientData']['clientEmail'])){echo $_SESSION['clientData']['clientEmail'];} ?>"  required >
+      <br>
       <input type="submit" name="submit" value="Save Client">
       <input type="hidden" name="action" value="updateClient">
       <input type="hidden" name="clientId" value="
@@ -42,6 +46,7 @@
     <h2>Change Your Password</h2>
     <p>*Note that your password will be permanently deleted</p>
     <form name="update-password-form" method="post" action="/phpmotors/accounts/index.php">
+      <label for="clientPassword">New Password</label>
       <input name="clientPassword" id="clientPassword" type="password" placeholder="New Password*" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
       <span class="password">Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
       <input type="submit" name="submit" value="Save Password">

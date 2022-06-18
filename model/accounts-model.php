@@ -65,7 +65,7 @@ function getClientById($clientId){
 	$stmt->closeCursor();
 	return $clientData;
    }
-   function updateClient($clientFirstname, $clientLastname, $clientEmail, $clientId) {
+function updateClient($clientFirstname, $clientLastname, $clientEmail, $clientId) {
 	// Create a connection object using the phpmotors connection function
 	$db = phpmotorsConnect();
 	// The SQL statement
