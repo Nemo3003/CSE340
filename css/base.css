@@ -27,6 +27,48 @@
 .error, .notice{
     color: #ff0000;
 }
+/*-----------------------------Classification---------------------------*/
+
+  #inv-display{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+   }
+   
+   #inv-display li{
+    border: 1px #ccc solid;
+    list-style-type: none;
+    flex: 1 1 auto;
+    margin: 0;
+    max-width: 200px;
+		flex: 1 0 auto;
+		text-align: center;
+		height: 250px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+   }
+   
+  #inv-display li img {
+    width: fit-content;
+      max-width: 100%;
+      margin: 0 auto;
+  }
+
+	#inv-display {
+		flex-flow: row wrap;
+		justify-content: flex-start;
+	}
+
+	#inv-display h2{
+		font-size: 1rem;
+	}
+      
+	#inv-display div {
+		width: 100%;
+	}
+
 /*--------------------NOT ALTERED IN ANY VIEW---------------------------*/
 html{
     background-image: url('/phpmotors/images/site/checkerboard.jpg');
