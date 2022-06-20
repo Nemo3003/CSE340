@@ -9,16 +9,18 @@
   <title><?php echo $classificationName; ?> vehicles | PHP Motors, Inc.</title>
 </head>
 <body>
-    <header id="header">
-    <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
-    </header>
-    <nav id ="page_nav" > 
-    <?php echo $navList; ?>
-    </nav>
-    <h1><?php echo $classificationName; ?> vehicles</h1>
-    <?php if(isset($message)){
-    echo $message; }
-    ?>
+<header id ="header_page">
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
+        </header>
+        <nav id ="page_nav" > 
+        <?php echo $navList; ?>
+        </nav>
+        <main>
+        <?php
+            if (isset($_SESSION['message'])) {
+                echo $_SESSION['message'];
+               }
+        ?>
     <?php if(isset($vehicleDisplay)){
     echo $vehicleDisplay;
     } ?>
