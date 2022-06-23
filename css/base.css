@@ -20,6 +20,9 @@
     display: flex;
     justify-content: flex-start;
 }
+/*-----------------------------Vehicle-----------------------------*/
+
+
 /*----------------------------Messages-----------------------------*/
 .success{
     color: #539153;
@@ -28,47 +31,30 @@
     color: #ff0000;
 }
 /*-----------------------------Classification---------------------------*/
+#inv-display {
+    display: flex;
+    justify-content: space-around;
+}
 
-  #inv-display{
-    margin: 0;
-    padding: 0;
+#inv-display h2{
+    font-size: 1rem;
+}
+
+#inv-display li {
+    max-width: 200px;
+    flex: 1 0 auto;
+    text-align: center;
+    height: 250px;
     display: flex;
     flex-direction: column;
-   }
-   
-   #inv-display li{
-    border: 1px #ccc solid;
-    list-style-type: none;
-    flex: 1 1 auto;
-    margin: 0;
-    max-width: 200px;
-		flex: 1 0 auto;
-		text-align: center;
-		height: 250px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-   }
-   
-  #inv-display li img {
-    width: fit-content;
-      max-width: 100%;
-      margin: 0 auto;
-  }
+    justify-content: space-between;
+    border: 1px solid rgb(17, 16, 16);
+}
+  
+#inv-display div {
+    width: 100%;
 
-	#inv-display {
-		flex-flow: row wrap;
-		justify-content: flex-start;
-	}
-
-	#inv-display h2{
-		font-size: 1rem;
-	}
-      
-	#inv-display div {
-		width: 100%;
-	}
-
+}
 /*--------------------NOT ALTERED IN ANY VIEW---------------------------*/
 html{
     background-image: url('/phpmotors/images/site/checkerboard.jpg');
@@ -173,6 +159,23 @@ footer {
     box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.75);}
     
 @media screen and (min-width: 7em) and (max-width: 29.9em) {
+    #inv-display{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+       }
+       
+       #inv-display li{
+        margin-bottom: .5em;
+        border: 1px #ccc solid;
+        list-style-type: none;
+        flex: 1 1 auto;
+       }
+       
+       #inv-display li img {
+           max-width: 100%;
+       }
     #data-admin .button{
         margin-left: 2rem;
     }
