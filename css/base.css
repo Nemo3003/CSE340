@@ -56,6 +56,17 @@
     width: 100%;
 
 }
+.vehicle-details{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+.vehicle-details-attributes{
+    list-style: none;
+}
+.title-vehicle{
+    text-align: center;
+}
 /*--------------------NOT ALTERED IN ANY VIEW---------------------------*/
 html{
     background-image: url('/phpmotors/images/site/checkerboard.jpg');
