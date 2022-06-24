@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/phpmotors/css/large.css" media="screen">
   <link rel="stylesheet" href="/phpmotors/css/base.css" media="screen">
-  <title><?php echo $vehicle['invMake'] . " " . $vehicle['invModel']; ?> | PHP Motors, Inc.</title>
+  <title><?php if(isset($invInfo['invMake'])){ echo "$invInfo[invMake] $invInfo[invModel]";} ?> | PHP Motors</title>
 </head>
 <body>
 <header id ="header_page">
