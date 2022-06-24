@@ -16,19 +16,19 @@
         <?php echo $navList; ?>
         </nav>
             <main>
-                <div class="main_content">
+                <div class="main_content-veh">
                     <h1 class="title-vehicle"><?php if(isset($invInfo['invMake'])){ echo "$invInfo[invMake] $invInfo[invModel]";} ?></h1>
                     <?php if (isset($_SESSION['message'])) { echo $_SESSION['message']; unset($_SESSION['message']); } ?>
                     <div class="vehicle-details">
-                        <div class="left-veh">
-                            <img class="vehicle-details-image" src="<?= $invInfo['invImage']; ?>" alt="<?= $invInfo['invMake'].' '.$invInfo['invModel']; ?> "/>
+                        <div>
+                            <img class="vehicle-img" src="<?= $invInfo['invImage']; ?>" alt="<?= $invInfo['invMake'].' '.$invInfo['invModel']; ?> "/>
 
                                 <span>Price: $<?= number_format($invInfo['invPrice'], 0) ?></span>
 
                         </div>
-                        <div class="right-veh">
+                        <div>
                             <h2><?= $invInfo['invMake']." ".$invInfo['invModel']; ?> Details</h2>
-                            <ul class="vehicle-details-attributes">
+                            <ul class="vehicle-ul">
                                 <li>
                                     <p><?= $invInfo['invDescription']; ?></p>
                                 </li>
