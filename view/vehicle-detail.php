@@ -20,13 +20,13 @@
                     <h1 class="title-vehicle"><?php if(isset($invInfo['invMake'])){ echo "$invInfo[invMake] $invInfo[invModel]";} ?></h1>
                     <?php if (isset($_SESSION['message'])) { echo $_SESSION['message']; unset($_SESSION['message']); } ?>
                     <div class="vehicle-details">
-                        <div>
+                        <div class="vehicle-div">
                             <img class="vehicle-img" src="<?= $invInfo['invImage']; ?>" alt="<?= $invInfo['invMake'].' '.$invInfo['invModel']; ?> "/>
 
-                                <span>Price: $<?= number_format($invInfo['invPrice'], 0) ?></span>
+                                <span class="inv-price">Price: $<?= number_format($invInfo['invPrice'], 0) ?></span>
 
                         </div>
-                        <div>
+                        <div class="vehicle-div">
                             <h2><?= $invInfo['invMake']." ".$invInfo['invModel']; ?> Details</h2>
                             <ul class="vehicle-ul">
                                 <li>

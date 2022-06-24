@@ -57,16 +57,9 @@
 
 }
 .vehicle-details{
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
+    font-size: larger;
 }
-.vehicle-ul{
-    list-style: none;
-}
-.title-vehicle{
-    text-align: center;
-}
+
 /*--------------------NOT ALTERED IN ANY VIEW---------------------------*/
 html{
     background-image: url('/phpmotors/images/site/checkerboard.jpg');
@@ -171,11 +164,14 @@ footer {
     box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.75);}
     
 @media screen and (min-width: 7em) and (max-width: 29.9em) {
+    
     #inv-display{
-        margin: 0;
+        margin: 1rem;
         padding: 0;
         display: flex;
         flex-direction: column;
+        place-items: center;
+        gap: 1rem;
        }
        
        #inv-display li{
@@ -188,6 +184,29 @@ footer {
        #inv-display li img {
            max-width: 100%;
        }
+       /*-------------------Vehicle Details------------------*/
+       .vehicle-details{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .vehicle-ul{
+        list-style: none;
+    }
+    .title-vehicle{
+        text-align: center;
+    }
+    .vehicle-img{
+        display: flex;
+        max-width: 20rem;
+        max-height: 25rem;
+        margin: 0 auto;
+    }
+    .inv-price{
+        margin-left: 3rem;
+        font-size: x-large;
+    }
+  
+    /*----------------------Vehicle details end*/
     #data-admin .button{
         margin-left: 2rem;
     }

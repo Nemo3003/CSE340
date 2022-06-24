@@ -66,5 +66,20 @@
         background-color: antiquewhite;
         text-decoration: none;
     }
+    .vehicle-details{
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem;
+    }
+
+    .vehicle-ul{
+        list-style: none;
+    }
+    .title-vehicle{
+        text-align: center;
+    }
+    .vehicle-img{
+        max-width: 25rem;
+    }
     
 }
