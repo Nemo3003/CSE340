@@ -215,7 +215,7 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
    // Free any memory associated with the old image
    imagedestroy($old_image);
  } // ends resizeImage function
- //The returned list of thumbnail images should be fed into a custom function that will wrap them in HTML so they are ready to be viewed. No additional information about the image needs to be included, just the thumbnail image itself with an "alt" value added to the image.
+
   function buildThumbnailView($vehicles) {
     $list = '<ul id="imageGallery">';
     foreach ($vehicles as $vehicle) {
