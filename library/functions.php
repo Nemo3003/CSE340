@@ -41,17 +41,7 @@ function getInventoryByClassification($classificationId){
   $stmt->closeCursor(); 
   return $inventory; 
  }
- // Get vehicle information by invId
-function getInvItemInfo($invId){
-  $db = phpmotorsConnect();
-  $sql = 'SELECT * FROM inventory WHERE invId = :invId';
-  $stmt = $db->prepare($sql);
-  $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
-  $stmt->execute();
-  $invInfo = $stmt->fetch(PDO::FETCH_ASSOC);
-  $stmt->closeCursor();
-  return $invInfo;
- }
+
  function buildVehiclesDisplay($vehicles){
   $dv = '<ul id="inv-display">';
   foreach ($vehicles as $vehicle) {
@@ -217,12 +207,12 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
  } // ends resizeImage function
 
   function buildThumbnailView($vehicles) {
-    $list = '<ul id="imageGallery">';
-    foreach ($vehicles as $vehicle) {
-    $list .= '<li>';
-    $list .= "<img src='$vehicle[invThumbnail]' alt='$vehicle[invMake] $vehicle[invModel]' />";
-    $list .= '</li>';
-    }
-    $list .= '</ul>';
-    return $list;
-  }
+      $list = '<ul id="imageGallery">';
+      foreach ($vehicles as $vehicle) {
+      $list .= '<li>';
+      $list .= '<img src="'."$vehicle[imgPath]".'" alt="'."$vehicle[invMake] $vehicle[invModel]".' image">';
+      $list .= '</li>';
+      }
+      $list .= '</ul>';
+      return $list;
+      }

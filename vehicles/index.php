@@ -5,6 +5,7 @@ session_start();
     require_once '../library/connections.php';
     require_once '../model/main-model.php';
     require_once '../model/vehicles-model.php';
+    require_once '../model/uploads-model.php';
     require_once '../library/functions.php';
 
     // Get the array of classifications
@@ -163,6 +164,8 @@ session_start();
             case 'VehicleInformations':
                 $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $invInfo = getInvItemInfo($invId);
+                $invThumb2 =  getImageThumbByClassification($invId);
+                $listThumb = buildThumbnailView($invThumb2);
                 if(!$invInfo) {
                     $_SESSION['message'] = "<h2 class='notice'>Vehicle could not be found.</h2>";
                     http_response_code(404);

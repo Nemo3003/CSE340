@@ -67,12 +67,12 @@ function checkExistingImage($imgName){
 function getImageThumbByClassification($invId){
 //this function will get a list of vehicles based on the classification.
     $db = phpmotorsConnect();
-    $sql = 'SELECT * FROM images WHERE imgPath LIKE "%-tn.%" AND invId = :invId;';
+    $sql = 'SELECT * FROM images JOIN inventory ON images.invId = inventory.invId WHERE imgPath LIKE "%-tn.%" AND inventory.invId = :invId;';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
     $stmt->execute();
     $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-return $vehicles;
+    return $vehicles;
 }
 ?>
