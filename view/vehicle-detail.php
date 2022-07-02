@@ -20,9 +20,10 @@
                     <h1 class="title-vehicle"><?php if(isset($invInfo['invMake'])){ echo "$invInfo[invMake] $invInfo[invModel]";} ?></h1>
                     <?php if (isset($_SESSION['message'])) { echo $_SESSION['message']; unset($_SESSION['message']); } ?>
                   
-                    <?php echo $listThumb?>
+                    
                   
                     <div class="vehicle-details">
+                    <?php echo $listThumb?>
                         <div class="vehicle-div">
                             <img class="vehicle-img" src="<?= $invInfo['invImage']; ?>" alt="<?= $invInfo['invMake'].' '.$invInfo['invModel']; ?> "/>
 

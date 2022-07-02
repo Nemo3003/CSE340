@@ -9,6 +9,11 @@
        --white: #ffffff;
        --roboto: 'Roboto', sans-serif;}
 /*------------------------------CONTENT----------------------------------*/
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 .title-error, .fif-error{
     text-align: center;
 }
@@ -185,9 +190,24 @@ footer {
            max-width: 100%;
        }
        /*-------------------Vehicle Details------------------*/
-       .vehicle-details{
+    .vehicle-details{
         display: grid;
         grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr)
+    }
+    .vehicle-div .vehicle-img{
+        grid-area: 1 / 1 / 2 / 2;
+        max-width: 18rem;
+    }
+    .vehicle-div .vehicle-ul{
+        grid-area: 2 / 1 / 3 / 2;
+        font-size: medium;
+        margin: 2rem;
+    }
+    #imageGallery{
+        grid-area: 3 / 1 / 4 / 2;
+        max-width: 10rem;
+        margin: -2rem auto 2rem auto;
     }
     .vehicle-ul{
         list-style: none;

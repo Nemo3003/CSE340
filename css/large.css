@@ -71,6 +71,21 @@
         justify-content: space-around;
         padding: 1rem;
     }
+    #inv-display{
+        margin: 2rem;
+    }
+    #inv-display li{
+        padding: 2.5rem;
+    }
+    .vehicle-ul{
+        margin: 1rem;
+    }
+    #imageGallery{
+        margin: 1rem;
+    }
+    #imageGallery li:hover{
+        transform: scale(1.3);
+    }
 
     .vehicle-ul{
         list-style: none;
