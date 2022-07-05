@@ -15,6 +15,8 @@ require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
 //Get the functions library
 require_once '../library/functions.php';
+//Get the review model
+require_once '../model/reviews-model.php';
 // Get the array of classifications
 $classifications = getClassifications();
 //Call the navbar
@@ -211,6 +213,12 @@ switch ($action) {
             
             break;    
   default:
+      $clientFirstname = $_SESSION["clientData"]["clientFirstname"];
+      $clientLastname = $_SESSION["clientData"]["clientLastname"];
+
+      $adminReviews = getReviewsByClientId($_SESSION['clientData']['clientId']);
+
+      $reviewsDisplay = buildAdminReviews($adminReviews, $clientFirstname, $clientLastname);
       include '../view/admin.php';
       break;
 }
