@@ -187,7 +187,7 @@ session_start();
                 $reviews = getReviewsByinvId($invId);
 
                 if($reviews == True) {
-                $clientReviews = buildClientReviews($reviews);
+                $clientReviews = getClientReviews($reviews);
                 }
                 include '../view/vehicle-detail.php';
                 break;

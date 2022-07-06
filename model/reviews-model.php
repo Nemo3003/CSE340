@@ -100,3 +100,13 @@ function deleteReview($reviewId) {
   // Return the indication of success (rows changed)
   return $rowsChanged; 
 } 
+function getClientReviews($clientId) {
+  $db = phpmotorsConnect();
+  $sql = 'SELECT reviewId, reviewText, reviewDate, invMake, invModel FROM reviews JOIN inventory ON inventory.invId = reviews.invId WHERE clientId = :clientId ORDER BY reviewDate DESC';
+  $stmt = $db->prepare($sql);
+  $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+  $stmt->execute();
+  $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $stmt->closeCursor();
+  return $reviews;
+}

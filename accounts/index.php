@@ -213,13 +213,9 @@ switch ($action) {
             
             break;    
   default:
-      $clientFirstname = $_SESSION["clientData"]["clientFirstname"];
-      $clientLastname = $_SESSION["clientData"]["clientLastname"];
-
-      $adminReviews = getReviewsByClientId($_SESSION['clientData']['clientId']);
-
-      $reviewsDisplay = buildAdminReviews($adminReviews, $clientFirstname, $clientLastname);
-      include '../view/admin.php';
-      break;
-}
+        $reviews = getClientReviews($_SESSION['clientData']['clientId']);
+        $reviewsDisplay = buildClientsReviews($reviews);
+          include '../view/admin.php';
+          exit;
+       }
 ?>

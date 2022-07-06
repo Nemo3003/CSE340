@@ -234,7 +234,7 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
         return $id;
       }
       
-      function buildClientReviews($reviews) {
+      function buildClientsReviews($reviews) {
         $re = '<ul id="reviews-display">';
         foreach ($reviews as $review) {
           $re .= '<li>';
