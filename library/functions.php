@@ -1,4 +1,5 @@
 <?php
+
 function checkEmail($clientEmail){
   //The filter_var() function filters a variable with the specified filter.
  $valEmail = filter_var($clientEmail, FILTER_VALIDATE_EMAIL);
@@ -15,7 +16,8 @@ function checkPass($clientPassword){
   $navList = '<ul>';
   $navList .= "<li><a href='/phpmotors/' title='View the PHP Motors home page'>Home</a></li>";
   foreach ($classifications as $classification) {
-     $navList .= "<li><a href='/phpmotors/vehicles/?action=classification&classificationName=".urlencode($classification['classificationName']). "' title='View our $classification[classificationName] lineup of vehicles'>$classification[classificationName]</a></li>";
+     $navList .= "<li><a href='/phpmotors/vehicles/?action=classification&classificationName=".urlencode($classification['classificationName']). "' 
+     title='View our $classification[classificationName] lineup of vehicles'>$classification[classificationName]</a></li>";
   }
   $navList .= '</ul>';
   return $navList;
@@ -55,9 +57,9 @@ function getInventoryByClassification($classificationId){
   $dv .= '</ul>';
   return $dv;
 }
-/* * ********************************
-*  Functions for working with images
-* ********************************* */
+/* * ************************************************************************************************************
+* -=--------------------------------- Functions for working with images------------------------------------------
+* *************************************************************************************************************** */
 // Adds "-tn" designation to file name
 function makeThumbnailName($image) {
   $i = strrpos($image, '.');
@@ -216,3 +218,53 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
       $list .= '</ul>';
       return $list;
       }
+      function buildReviewBox($screenName, $clientId, $invId, $reviewDate) {
+        $id = '<div id="write-review">';
+        //$id = '<h3>Add a Review</h3>';
+        $id .= "<form name='reviews-form' method='post' action='/phpmotors/reviews/index.php'>";
+        $id .= "<label for='screenName'>Screen Name:</label>";
+        $id .= "<input name='screenName' id='screenName' type='text' value='$screenName' readonly required>";
+        $id .= "<label for='reviewText'>Review:</label>";
+        $id .= "<textarea name='reviewText' id='reviewText' required></textarea>";
+        $id .= "<input name='invId' type='hidden' value='$invId'>";
+        $id .= "<input name='clientId' type='hidden' value='$clientId'>";
+        $id .= "<input name='reviewDate' type='hidden' value='$reviewDate'>";
+        $id .= "<input name='submit' type='submit' value='Submit'>";
+        $id .= "<input type='hidden' name='action' value='addReview'>";
+        $id .= '</form>';
+        $id .= '</div>';
+        return $id;
+      }
+      
+      function buildClientsReviews($reviews) {
+        $re = '<ul id="reviews-display">';
+        foreach ($reviews as $review) {
+          $re .= '<li>';
+          $screenname = getScreenname($review['clientFirstname'], $review['clientLastname']);
+          $date = date("m-d-Y H:i", strtotime($review['reviewDate']));
+          $re .= "<h5>$screenname <span> $date</span></h5>";
+          $re .= "<p>$review[reviewText]</p>";
+          $re .= '</li>';
+        }
+        $re .= '</ul>';
+        return $re;
+      }
+      
+      function getScreenname($firstname, $lastname) {
+        return substr($firstname, 0, 1) . $lastname;
+      }
+      
+      function buildAdminReviews($reviews) {
+        $re = '<ul id="admin-reviews-display">';
+        foreach ($reviews as $review) {
+          $re .= '<li>';
+          $re .= '';
+          $screenname = getScreenname($review['clientFirstname'], $review['clientLastname']);
+          $date = date("m-d-Y H:i", strtotime($review['reviewDate']));
+          $re .= "<div><h5>$screenname <span> $date</span> $review[invMake] $review[invModel]</h5></div>";
+          $re .= "<div><a href='/phpmotors/reviews?action=editReview&reviewId=$review[reviewId]'>Update</a> | <a href='/phpmotors/reviews?action=deleteReview&reviewId=$review[reviewId]'>Delete</a></div>";
+          $re .= '</li>';
+        }
+        $re .= '</ul>';
+        return $re;
+      } 

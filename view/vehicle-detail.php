@@ -46,6 +46,22 @@
                         </div>
                     </div>
                 </div>
+                <hr>
+        <div class="reviews-container">
+            <h2>Customer Reviews</h2>
+            <?php 
+            if($_SESSION['loggedin'] == False) { 
+                echo "You must login to write a review.";
+            } else {
+                echo $writeReview;
+            }
+            if(!isset($_SESSION['reviews'])) { 
+                echo "Be the first to write a review.";
+            } else {
+                echo $_SESSION['reviews'];
+            }
+            ?>
+  </div>
             </main>
   <footer id="footer">
     <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>

@@ -15,6 +15,8 @@ require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
 //Get the functions library
 require_once '../library/functions.php';
+//Get the review model
+require_once '../model/reviews-model.php';
 // Get the array of classifications
 $classifications = getClassifications();
 //Call the navbar
@@ -35,6 +37,12 @@ if ($action == NULL) {
 if(isset($_COOKIE['firstname'])){
   $cookieFirstname = filter_input(INPUT_COOKIE, 'firstname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
  }
+ if(isset($_SESSION['loggedin'])){
+  $reviews = getClientReviews($_SESSION['clientData']['clientId']);
+  $reviewsDisplay = buildClientsReviews($reviews);
+  $reviewsAdminDisplay = buildAdminReviews($reviews);
+}
+
 
 switch ($action) {
   case 'template':
@@ -115,6 +123,13 @@ switch ($action) {
       array_pop($clientData);
       // Store the array into the session
       $_SESSION['clientData'] = $clientData;
+      //Get client Reviews
+      if(!isset($reviews) | !isset($reviewsDisplay)){
+        $reviews = getClientReviews($_SESSION['clientData']['clientId']);
+        $reviewsDisplay = buildClientsReviews($reviews);
+        $reviewsAdminDisplay = buildAdminReviews($reviews);
+      }
+      
       // Send them to the admin view
       include '../view/admin.php';
       exit;
@@ -211,7 +226,8 @@ switch ($action) {
             
             break;    
   default:
-      include '../view/admin.php';
-      break;
-}
+
+          include '../view/admin.php';
+          exit;
+       }
 ?>
