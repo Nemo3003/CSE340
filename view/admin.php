@@ -40,10 +40,12 @@ Password: Sup3rU$er */
                 <li>Email: <?php echo $_SESSION['clientData']['clientEmail']?></li>
             </ul>
             <h2>My Reviews</h2>
+
                         <? echo $reviewsAdminDisplay; ?>
                         <?php 
 
             ?>
+
             <h2 class="lefty">Account Management</h2>
             <p>Use this link to update your account information.</p>
             <a class="button" href="/phpmotors/accounts/index.php?action=updateClient">Update Account</a>

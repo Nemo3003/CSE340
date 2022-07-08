@@ -55,10 +55,12 @@
             } else {
                 echo $writeReview;
             }
+
             if(!isset($_SESSION['reviews'])) { 
                 echo "Be the first to write a review.";
             } else {
                 echo $_SESSION['reviews'];
+
             }
             ?>
   </div>

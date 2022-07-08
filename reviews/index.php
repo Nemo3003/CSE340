@@ -1,5 +1,7 @@
 <?php
+
 // this is the reviews controller
+
 // Create or access a Session
 session_start();
 
@@ -8,7 +10,9 @@ require_once '../model/main-model.php';
 require_once '../model/reviews-model.php';
 require_once '../library/functions.php';
 
+
 $classifications = getClassifications();
+
 
 $navList = NavBar($classifications);
 
@@ -28,12 +32,15 @@ $action = filter_input(INPUT_POST, 'action');
     // Check for missing data
     if(empty($clientId) || empty($invId) || empty($reviewDate) || empty($reviewText)){
       $_SESSION['message'] = '<p>Please provide information for all empty form fields.</p>';
+
       header("Location: /phpmotors/vehicles/?action=VehicleInformations&invId=$invId");
+
       exit; 
     }
 
     // Send the data to the model
     $addReviewResult = addReview($clientId, $invId, $reviewDate, $reviewText);
+
     
     // Check and report the result
     if($addReviewResult) {
@@ -46,6 +53,7 @@ $action = filter_input(INPUT_POST, 'action');
       exit;
     }
     
+
     break;
   case 'editReview':
     $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_SANITIZE_NUMBER_INT); 
@@ -58,7 +66,9 @@ $action = filter_input(INPUT_POST, 'action');
     $reviewInfo = getReviewsByreviewId($reviewId);
     $reviewText = $reviewInfo[0]['reviewText'];
 
+
     include '../view/review-update.php';
+
     break;
   case 'updateReview':
     $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
@@ -72,6 +82,7 @@ $action = filter_input(INPUT_POST, 'action');
     }
 
     // Send the data to the model
+
     // Send the data to the model
     $updateReview = updateReview($clientId, $invId, $reviewDate, $reviewText);
     
@@ -86,6 +97,7 @@ $action = filter_input(INPUT_POST, 'action');
       exit;
     }
     else {
+
       $message = "<p class='error'>Sorry, something went wrong, your review was not updated. Please try again.</p>";
       include '../view/admin.php';
       exit;
@@ -96,6 +108,7 @@ $action = filter_input(INPUT_POST, 'action');
     $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
 
     // Send to vehicle model
+
        // Send the data to the model
        $deleteReview = deleteReview($reviewId);
     
@@ -108,13 +121,13 @@ $action = filter_input(INPUT_POST, 'action');
          $_SESSION['reviews'] = $adminReviews;
          header("Location: /phpmotors/vehicles/?action=VehicleInformations&invId=$invId");
          exit;
+
     } else {
       $message = "<p class='error'>Sorry, something went wrong, your review was not deleted. Please try again.</p>";
       include '../view/admin.php';
       exit;
     }
     break;
-
 
   default:
     if ($_SESSION['loggedin'] == True) {

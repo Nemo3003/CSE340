@@ -188,6 +188,7 @@ session_start();
                 $clientReviews = buildClientsReviews($loQueQuieras);
                 $_SESSION['reviews'] = $clientReviews;
 
+
                 if($reviews == True) {
                 $clientReviews = getClientReviews($reviews);
                 }
