@@ -1,2 +1,2 @@
 # CSE340
-Spring 2022
+Spring 2022.
