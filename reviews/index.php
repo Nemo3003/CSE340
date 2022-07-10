@@ -63,7 +63,7 @@ $action = filter_input(INPUT_POST, 'action');
 
     $screenName = getScreenname($clientFirstname, $clientLastname);
 
-    $reviewInfo = getReviewsByreviewId($reviewId);
+    $reviewInfo = getReviewsByinvId($reviewId);
     $reviewText = $reviewInfo[0]['reviewText'];
 
 

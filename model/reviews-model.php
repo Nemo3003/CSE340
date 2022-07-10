@@ -63,17 +63,14 @@ function getReviewsByreviewId($reviewId) {
 }
 
 // Update review
-function updateReview($reviewId, $reviewText) {
-  // Create a connection object using the phpmotors connection function
+function updateReview($reviewId, $reviewText,$clientId) {
   $db = phpmotorsConnect();
-  // The SQL statement
-  $sql = 'UPDATE reviews SET reviewText = :reviewText
-          WHERE reviewId = :reviewId';
-  // Create the prepared statement using the phpmotors connection
-  $stmt = $db->prepare($sql);
+  $sql = "update reviews set reviewText = :reviewText where reviewId = :revId and clientId = :clientId";
 
-  $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_INT);
+  $stmt = $db->prepare($sql);
   $stmt->bindValue(':reviewText', $reviewText, PDO::PARAM_STR);
+  $stmt->bindValue(':revId', $reviewId, PDO::PARAM_INT);
+  $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
 
   // Insert the data
   $stmt->execute();
@@ -82,23 +79,31 @@ function updateReview($reviewId, $reviewText) {
   // Close the database interaction
   $stmt->closeCursor();
   // Return the indication of success (rows changed)
-  return $rowsChanged; 
+  return $rowsChanged;
 }
 
 // Delete review
-function deleteReview($reviewId) {
-  // Create a connection object using the phpmotors connection function
+function deleteReview($reviewId,$clientId) {
   $db = phpmotorsConnect();
-  // The SQL statement
-  $sql = $sql = 'DELETE FROM reviews WHERE reviewId = :reviewId';
-  $stmt = $db->prepare($sql);
-  $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_INT);
-  $stmt->execute();
-  $rowsChanged = $stmt->rowCount();
-  // Close the database interaction
-  $stmt->closeCursor();
-  // Return the indication of success (rows changed)
-  return $rowsChanged; 
+   $sql = 'DELETE FROM reviews WHERE reviewid = :reviewId AND clientid IN (SELECT clientid FROM clients WHERE clientid = :clientId OR clientLevel = 3)';
+   // The SQL statement
+
+   //  $sql = 'DELETE FROM reviews WHERE reviewId = :revId';
+   // Create the prepared statement using the phpmotors connection
+   $stmt = $db->prepare($sql);
+   // The next nine lines replace the placeholders in the SQL
+   // statement with the actual values in the variables
+   // and tells the database the type of data it is
+   $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_INT);
+   $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+   // Insert the data
+   $stmt->execute();
+   // Ask how many rows changed as a result of our insert
+   $rowsChanged = $stmt->rowCount();
+   // Close the database interaction
+   $stmt->closeCursor();
+   // Return the indication of success (rows changed)
+   return $rowsChanged;
 } 
 function getClientReviews($clientId) {
   $db = phpmotorsConnect();

@@ -40,7 +40,6 @@ Password: Sup3rU$er */
                 <li>Email: <?php echo $_SESSION['clientData']['clientEmail']?></li>
             </ul>
             <h2>My Reviews</h2>
-
                         <? echo $reviewsAdminDisplay; ?>
                         <?php 
 
