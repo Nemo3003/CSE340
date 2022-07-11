@@ -35,7 +35,7 @@
       <label for='reviewText'>Review:</label>
       <textarea name='reviewText' id='reviewText' required><?php if(isset($reviewInfo)){ echo $reviewInfo[0]['reviewText']; } ?></textarea>
       <input type="submit" name="submit" value="Update">
-      <input type="hidden" name="action" value="updateReview">
+      <input type="hidden" name="action" value="updateReview"> 
       <input type="hidden" name="reviewId" value="<?php if(isset($reviewId)){ echo $reviewId; } ?>">
     </form>
   </div>

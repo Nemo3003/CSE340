@@ -92,7 +92,7 @@ function deleteReview($reviewId) {
    // Ask how many rows changed as a result of our insert
    $rowsChanged = $stmt->rowCount();
    // Close the database interaction
-   $stmt->closeCursor();
+   $stmt->closeCursor(); 
    // Return the indication of success (rows changed)
    return $rowsChanged;
 } 

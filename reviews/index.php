@@ -99,7 +99,7 @@ $action = filter_input(INPUT_POST, 'action');
         include '../view/admin.php';
         exit;
       }
-      break;
+      break; 
   case 'deleteReview':
     // Filter and store the data
     $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
