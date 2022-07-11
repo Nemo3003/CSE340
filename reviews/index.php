@@ -70,52 +70,36 @@ $action = filter_input(INPUT_POST, 'action');
 
     break;
   case 'updateReview':
-    $reviewId=filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
-    $reviewText=filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_STRING);
-  
-    //Check for missiong data
-    if(empty($reviewId) || empty($reviewText)){
-      $messageUpdateError = "<div class='alert alert_danger' onclick=";
-      $messageUpdateError.='this.style.display="none"';
-      $messageUpdateError.=">";
-  
-      $messageUpdateError .= "<p class='info_text notice'> You can't submit an empty comment. The review was not updated</p>
-      <br>
-      <br>
-      <span class='review_date'>Touch here to close</span></div>";
-      include '../accounts/index.php';
-      exit;
+    $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
+    $reviewText = trim(filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
+    // Check for missing data
+    if(empty($reviewId) || empty($reviewText)) {
+      $_SESSION['message'] = '<p>Please provide information for all empty form fields.</p>';
+      include '../view/admin.php';
+      exit; 
     }
-  
-    $updateReview=updateSpecificReview($reviewText,$reviewId);
-    if ($updateReview){
-      $messageUpdate = "<div class='alert alert_danger' onclick=";
-      $messageUpdate.='this.style.display="none"';
-      $messageUpdate.=">";
-  
-      $messageUpdate .= "<p class='info_text notice'> The comment was updated sucessfuly</p>
-      <br>
-      <br>
-      <span class='review_date'>Touch here to close</span></div>";
-  
-      $_SESSION['messageUpdate']=$messageUpdate;
-      header("Location:/phpmotors/accounts/index.php");
-      exit;
-    }else{
-      $messageError = "<div class='alert alert_danger' onclick=";
-      $messageError.='this.style.display="none"';
-      $messageError.=">";
-  
-      $messageError .= "<p class='info_text notice'> The comment was not updated</p>
-      <br>
-      <br>
-      <span class='review_date'>Touch here to close</span></div>";
-  
-      $_SESSION['messageError']=$messageError;
-      header("Location:/phpmotors/accounts/index.php");
-      exit;
-    }
-    break;
+
+    // Send the data to the model
+
+    // Send the data to the model
+    $updateReview = updateReview($clientId, $invId, $reviewDate, $reviewText);
+
+    // Check and report the result
+    if($updateReview) {
+
+      $loQueQuieras = getReviewsByinvId($invId);
+      $adminReviews = buildAdminReviews($loQueQuieras);
+      $_SESSION['message'] = "Your review has been updated successfully.";
+      $_SESSION['reviews'] = $adminReviews;
+      header("Location: /phpmotors/vehicles/?action=VehicleInformations&invId=$invId");
+    }else {
+
+        $message = "<p class='error'>Sorry, something went wrong, your review was not updated. Please try again.</p>";
+        include '../view/admin.php';
+        exit;
+      }
+      break;
   case 'deleteReview':
     // Filter and store the data
     $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
