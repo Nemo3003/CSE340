@@ -27,13 +27,13 @@
         <h2 class="form_subHeader">Reviewed on <?php $timestamp = strtotime($review['reviewDate']); $date = date("d F\, Y",$timestamp); echo $date;?></h2>
         <form class="reviewForm" action='/phpmotors/reviews/index.php' method='post'>
             <h3 class="messageFormReview">Deletes cannot be undone. Are you sure you want to delete this review?</h3>
-            <label for='review'>Review Text:</label><br>
-            <textarea  name='review' id='review' class="reviewTextarea" required readonly><?php if(isset($review['reviewText'])) {echo $review['reviewText']; }?></textarea><br>
+            <label for='reviewText'>Review:</label>
+            <textarea name='reviewText' id='reviewText' required><?php if(isset($reviewInfo)){ echo $reviewInfo[0]['reviewText']; 
+             } ?></textarea>
             <input type='submit' name='submit' class='reviewButton' value='Delete Review'>
             <input type='hidden' name='action' value='deleteReview'>
             <input type='hidden' name='reviewId' value=<?php echo $review['reviewId']?>>
-            <input type='hidden' name='invMake' value=<?php echo $review['invMake']?>>
-            <input type='hidden' name='invModel' value=<?php echo $review['invModel']?>>
+
          </form>
 
     </main>

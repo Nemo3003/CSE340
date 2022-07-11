@@ -100,17 +100,17 @@ $action = filter_input(INPUT_POST, 'action');
       }
       break; 
   case 'delete':       
-          $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_VALIDATE_INT);
-          $revInfo = getReviewsByreviewId($reviewId);
-          $reviewInfo = getReviewsByreviewId($reviewId);
-          $reviewText = $reviewInfo[0]['reviewText'];
+    $pageTitle = 'Reviews';
+    //get reviewId from the URL action pass-through
+    $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_VALIDATE_INT);
 
-          if(count($revInfo)<1){
-              $message = '<p>Sorry, no review information could be found.</p>';
-          }
-          include '../view/review-delete.php';
-          exit; 
-      break;
+    //take the review ID and go find the specific review (includes: date, text, clientID, etc)
+    //send review Data to a build VIEW function to bind with vehicleID, etc.
+    $reviewDisplay = deleteReview($reviewId);
+    $reviewUpdate = $reviewDisplay;
+
+    include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/review-delete.php';
+    break;
       case 'deleteReview':
           // Filter and store the data
           $reviewText = filter_input(INPUT_POST, 'invDescription', FILTER_SANITIZE_FULL_SPECIAL_CHARS);    

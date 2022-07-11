@@ -227,6 +227,7 @@ switch ($action) {
             break;    
         
   default:
+            
           include '../view/admin.php';
           exit;
        }
