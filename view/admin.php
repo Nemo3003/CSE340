@@ -6,6 +6,7 @@
   if(isset($_SESSION['messages'])) {
     $messages = $_SESSION['messages'];
   }
+
   /**Email: admin@cse340.net
 Password: Sup3rU$er*/
 ?><!DOCTYPE html>

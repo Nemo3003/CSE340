@@ -75,8 +75,8 @@ $action = filter_input(INPUT_POST, 'action');
 
     // Check for missing data
     if(empty($reviewId) || empty($reviewText)) {
-      $_SESSION['message'] = '<p>Please provide information for all empty form fields.</p>';
-      include '../view/admin.php';
+      $_SESSION['messages'] = '<p>Please provide information for all empty form fields.</p>';
+      header("Location: /phpmotors/accounts/index.php?action=admin");
       exit; 
     }
 
@@ -89,13 +89,13 @@ $action = filter_input(INPUT_POST, 'action');
 
       $loQueQuieras = getReviewsByreviewId($reviewId);
       $adminReviews = buildAdminReviews($loQueQuieras);
-      $_SESSION['message'] = "Your review has been updated successfully.";
+      $_SESSION['messages'] = "Your review has been updated successfully.";
       $_SESSION['reviews'] = $adminReviews;
-      include '../view/admin.php';
+      header("Location: /phpmotors/accounts/index.php?action=admin");
     }else {
 
         $message = "<p class='error'>Sorry, something went wrong, your review was not updated. Please try again.</p>";
-        include '../view/admin.php';
+        header("Location: /phpmotors/accounts/index.php?action=admin");
         exit;
       }
       break; 
@@ -124,7 +124,7 @@ $action = filter_input(INPUT_POST, 'action');
 
           // Check and report the result
           if ($deleteResult) {
-              $_SESSION['message'] = "Congratulations, your review was successfully deleted.";   
+              $_SESSION['messages'] = "Congratulations, your review was successfully deleted.";   
               $reviews = getReviewsByClientId($clientId);
               if(!count($reviews)){
                   $_SESSION['message-rev'] = "Sorry. You haven't written any reviews.";
@@ -133,11 +133,11 @@ $action = filter_input(INPUT_POST, 'action');
                   $reviewsList = buildClientsReviews($reviews);
                   $_SESSION['reviewsList'] = $reviewsList;
               }         
-              include '../view/admin.php';
+              header("Location: /phpmotors/accounts/index.php?action=admin");
               exit;
           } else {
-              $_SESSION['message'] = "Sorry. We couldn't delete this review. Please try again.";        
-              include '../view/admin.php';
+              $_SESSION['messages'] = "Congratulations, your review was successfully deleted.";        
+              header("Location: /phpmotors/accounts/index.php?action=admin");
               exit;        
           }				
       break;
