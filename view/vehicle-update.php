@@ -96,3 +96,4 @@ elseif(isset($invId)){ echo $invId; } ?>
     
 </body>
 </html>
+<?php unset($_SESSION['message']); ?>

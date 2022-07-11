@@ -88,3 +88,4 @@ echo $invInfo['invId'];} ?>">
     
 </body>
 </html>
+<?php unset($_SESSION['message']); ?>

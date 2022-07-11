@@ -46,5 +46,5 @@ if(isset($_SESSION['message'])) {
     <script src = "js/app.js"></script>
 </body>
 </html>
-  <!---->
+<?php unset($_SESSION['message']); ?>
   

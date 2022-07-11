@@ -68,3 +68,4 @@ Password: Sup3rU$er*/
     <script src = "js/app.js"></script>
 </body>
 </html>
+<?php unset($_SESSION['messages']); ?>
