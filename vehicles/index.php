@@ -186,7 +186,10 @@ session_start();
 
                 $loQueQuieras = getReviewsByinvId($invId);
                 $clientReviews = buildClientsReviews($loQueQuieras);
+                /*$loQueQuieras2 = getReviewsByreviewId($invId, $reviewDate);
+                $adminReviews = buildAdminReviews($loQuieras2);*/
                 $_SESSION['reviews'] = $clientReviews;
+
 
 
                 if($reviews == True) {

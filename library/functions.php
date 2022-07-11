@@ -264,8 +264,9 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
           $screenname = getScreenname($review['clientFirstname'], $review['clientLastname']);
           $date = date("m-d-Y H:i", strtotime($review['reviewDate']));
           $re .= "<div><h5>$screenname <span> $date</span> $review[invMake] $review[invModel]</h5></div>";
-          $re .= "<div><a href='/phpmotors/reviews?action=editReview&reviewId=$review[reviewId]'>Update</a> | <a href='/phpmotors/reviews?action=deleteReview&reviewId=$review[reviewId]'>Delete</a></div>";
           $re .= "<p>$review[reviewText]</p>";
+          $re .= "<div><a href='/phpmotors/reviews?action=editReview&reviewId=$review[reviewId]'>Update</a> | <a href='/phpmotors/reviews?action=deleteReview&reviewId=$review[reviewId]'>Delete</a></div>";
+      
           $re .= '</li>';
         }
         $re .= '</ul>';

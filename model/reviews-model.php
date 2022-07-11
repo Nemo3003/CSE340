@@ -68,7 +68,7 @@ function updateReview($reviewId, $reviewText){
   $sql = 'UPDATE reviews SET reviewText = :reviewText WHERE reviewId = :reviewId';
   $stmt = $db->prepare($sql);
   $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_INT);
-   $stmt->bindValue(':reviewText', $reviewText, PDO::PARAM_STR);
+  $stmt->bindValue(':reviewText', $reviewText, PDO::PARAM_STR);
   $stmt->execute();
   $rowsChanged = $stmt->rowCount();
   $stmt->closeCursor();

@@ -31,9 +31,11 @@
   <div class="flex-container">
   <form name="update-review-form" method="post" action="/phpmotors/reviews/index.php">
       <label for='screenName'>Screen Name:</label>
-      <input name='screenName' id='screenName' type='text' readonly required value="<?php if(isset($screenName)){ echo $screenName; } ?>">
+      <input name='screenName' id='screenName' type='text' readonly required value="<?php if(isset($screenName))
+      { echo $screenName; } ?>">
       <label for='reviewText'>Review:</label>
-      <textarea name='reviewText' id='reviewText' required><?php if(isset($reviewInfo)){ echo $reviewInfo[0]['reviewText']; } ?></textarea>
+      <textarea name='reviewText' id='reviewText' required><?php if(isset($reviewInfo)){ echo $reviewInfo[0]['reviewText']; 
+      } ?></textarea>
       <input type="submit" name="submit" value="Update">
       <input type="hidden" name="action" value="updateReview"> 
       <input type="hidden" name="reviewId" value="<?php if(isset($reviewId)){ echo $reviewId; } ?>">

@@ -82,7 +82,6 @@ $action = filter_input(INPUT_POST, 'action');
 
     // Send the data to the model
 
-    // Send the data to the model
     $updateReview = updateReview($clientId, $invId, $reviewDate, $reviewText);
 
     // Check and report the result
