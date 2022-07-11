@@ -62,7 +62,7 @@ $action = filter_input(INPUT_POST, 'action');
 
     $screenName = getScreenname($clientFirstname, $clientLastname);
 
-    $reviewInfo = getReviewsByinvId($reviewId);
+    $reviewInfo = getReviewsByreviewId($reviewId);
     $reviewText = $reviewInfo[0]['reviewText'];
 
 
@@ -82,16 +82,16 @@ $action = filter_input(INPUT_POST, 'action');
 
     // Send the data to the model
 
-    $updateReview = updateReview($clientId, $invId, $reviewDate, $reviewText);
+    $updateReview = updateReview($reviewId, $reviewText);
 
     // Check and report the result
     if($updateReview) {
 
-      $loQueQuieras = getReviewsByinvId($invId);
+      $loQueQuieras = getReviewsByreviewId($reviewId);
       $adminReviews = buildAdminReviews($loQueQuieras);
       $_SESSION['message'] = "Your review has been updated successfully.";
       $_SESSION['reviews'] = $adminReviews;
-      header("Location: /phpmotors/vehicles/?action=VehicleInformations&invId=$invId");
+      include '../view/admin.php';
     }else {
 
         $message = "<p class='error'>Sorry, something went wrong, your review was not updated. Please try again.</p>";
@@ -99,36 +99,52 @@ $action = filter_input(INPUT_POST, 'action');
         exit;
       }
       break; 
-  case 'deleteReview':
-    // Filter and store the data
-    $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
+  case 'delete':       
+          $reviewId = filter_input(INPUT_GET, 'reviewId', FILTER_VALIDATE_INT);
+          $revInfo = getReviewsByreviewId($reviewId);
+          $reviewInfo = getReviewsByreviewId($reviewId);
+          $reviewText = $reviewInfo[0]['reviewText'];
 
-    // Send to vehicle model
+          if(count($revInfo)<1){
+              $message = '<p>Sorry, no review information could be found.</p>';
+          }
+          include '../view/review-delete.php';
+          exit; 
+      break;
+      case 'deleteReview':
+          // Filter and store the data
+          $reviewText = filter_input(INPUT_POST, 'invDescription', FILTER_SANITIZE_FULL_SPECIAL_CHARS);    
+          $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
+          
+          $revInfo = getReviewsByreviewId($reviewId);
+          $clientId = $revInfo['clientId'];
 
-       // Send the data to the model
-       $deleteReview = deleteReview($reviewId);
-    
-       // Check and report the result
-       if($deleteReview) {
-   
-         $loQueQuieras = getReviewsByreviewId($invId);
-         $adminReviews = buildAdminReviews($loQueQuieras);
-         $_SESSION['message'] = "Your review has been deleted successfully.";
-         $_SESSION['reviews'] = $adminReviews;
-         header("Location: /phpmotors/vehicles/?action=VehicleInformations&invId=$invId");
-         exit;
+          // Send the data to the model
+          $deleteResult = deleteReview($reviewId);
 
-    } else {
-      $message = "<p class='error'>Sorry, something went wrong, your review was not deleted. Please try again.</p>";
-      include '../view/admin.php';
-      exit;
-    }
-    break;
-
+          // Check and report the result
+          if ($deleteResult) {
+              $_SESSION['message'] = "Congratulations, your review was successfully deleted.";   
+              $reviews = getReviewsByClientId($clientId);
+              if(!count($reviews)){
+                  $_SESSION['message-rev'] = "Sorry. You haven't written any reviews.";
+                  unset($_SESSION['reviewsList']);
+              } else {
+                  $reviewsList = buildClientsReviews($reviews);
+                  $_SESSION['reviewsList'] = $reviewsList;
+              }         
+              include '../view/admin.php';
+              exit;
+          } else {
+              $_SESSION['message'] = "Sorry. We couldn't delete this review. Please try again.";        
+              include '../view/admin.php';
+              exit;        
+          }				
+      break;
   default:
     if ($_SESSION['loggedin'] == True) {
       include '../view/admin.php';
     } else {
-      header("Location: /phpmotors/index.php");
+      header("Location: /phpmotors/view/home.php");
     }
  } 
