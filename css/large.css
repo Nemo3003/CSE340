@@ -96,5 +96,22 @@
     .vehicle-img{
         max-width: 25rem;
     }
-    
+    /*---------------------------------------REVIEW-----------------------------------------*/
+    #write-review{
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem;
+    }
+    #reviews-display{
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem;
+        background-color: bisque;
+    }
+    #admin-reviews-display{
+        display: flex;
+        justify-content: space-evenly;
+        padding: 1rem;
+        background-color: bisque;
+    }
 }

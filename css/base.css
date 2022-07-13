@@ -238,7 +238,7 @@ footer {
         height: 2rem;
         }
     #delorean {
-        background-image: url('/phpmotors/images/vehicles/delorean_1_45.jpg');
+        background-image: url('/phpmotors/images/delorean_1_45.jpg');
         background-repeat: no-repeat;
         background-position: center;
         position: relative;
@@ -273,5 +273,16 @@ footer {
         margin: .5rem;
         border: 2px solid #333;
         background-color: antiquewhite;
+    }
+    /*--------------------------------------Reviews-------------------------------------------*/
+    #reviews-display{
+        padding: 1rem;
+        background-color: bisque;
+        text-align: center;
+    }
+    #admin-reviews-display{
+        text-align: center;
+        padding: 1rem;
+        background-color: bisque;
     }
 }
